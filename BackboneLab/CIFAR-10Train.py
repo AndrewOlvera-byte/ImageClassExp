@@ -54,9 +54,12 @@ criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
 
 #Optimizer
 optimizer = optim.AdamW(model.parameters(), lr=0.001, weight_decay=5e-4)
+#Epochs
 epochs = 100
+#Scheduler
 scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
 
+#AMP
 scaler = torch.amp.GradScaler('cuda', enabled=use_amp)
 
 #EMA weight tracker
